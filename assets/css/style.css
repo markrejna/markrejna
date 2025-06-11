@@ -506,7 +506,13 @@ main {
 
 .about-text p { margin-bottom: 15px; }
 
-
+.contact-text {
+  color: var(--light-gray);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
 
 /**
  * #service 
