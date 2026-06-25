@@ -11,15 +11,31 @@ const pages = document.querySelectorAll("[data-page]");
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
 
-    // 1. Loop through all pages to find the one matching the clicked button text
-    for (let j = 0; j < pages.length; j++) {
-      if (this.innerHTML.toLowerCase() === pages[j].dataset.page) {
-        pages[j].classList.add("active");
-        navigationLinks[j].classList.add("active");
-        window.scrollTo(0, 0); // Scroll to top smoothly when switching pages
+    for (let i = 0; i < pages.length; i++) {
+      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
+        pages[i].classList.add("active");
+        navigationLinks[i].classList.add("active");
+        window.scrollTo({ top: 0 }); // Resets window to top for desktop view
+        
+        // MOBILE OVERRIDE: If on a mobile screen, scroll past the sidebar automatically
+        if (window.innerWidth <= 768) {
+          const mainContent = document.querySelector('.main-content');
+          if (mainContent) {
+            // Calculates the position of the content block minus the sticky header
+            const headerOffset = 90; 
+            const elementPosition = mainContent.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
+          }
+        }
+        
       } else {
-        pages[j].classList.remove("active");
-        navigationLinks[j].classList.remove("active");
+        pages[i].classList.remove("active");
+        navigationLinks[i].classList.remove("active");
       }
     }
 
