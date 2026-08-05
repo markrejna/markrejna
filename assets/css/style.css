@@ -508,6 +508,27 @@ textarea.form-input {
   background: #002244;
 }
 
+/* PUBLICATION CARDS */
+.publications-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.publication-card {
+  padding: 16px;
+  background: var(--bg-main);
+  border-radius: 8px;
+  border-left: 4px solid var(--accent);
+}
+
+.publication-card p {
+  font-size: 14px;
+  color: var(--text-main);
+  line-height: 1.5;
+  margin: 0;
+}
+
 /*-----------------------------------*\
   #MOBILE OPTIMIZATION OVERRIDES
 \*-----------------------------------*/
